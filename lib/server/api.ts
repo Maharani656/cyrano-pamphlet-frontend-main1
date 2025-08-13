@@ -3,7 +3,6 @@
 import {
   GlobalData,
   PageData,
-  StrapiResponse,
 } from "@/interfaces/page.interface";
 import { StrapiImage } from "@/interfaces/section.interface";
 import { getLocale } from "./locale";
