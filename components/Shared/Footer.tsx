@@ -5,7 +5,7 @@ import { useNavigationLink } from "@/lib/hooks/useNavigationLink";
 import { useFooterLinks } from "@/lib/hooks/useFooterLinks";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
 import { PrimaryButton, SecondaryButton } from "../ui/Buttons";
-import Ticker from "../sections/Ticker";
+
 
 export default function Footer() {
   const { data, loading } = useNavigationLink();
