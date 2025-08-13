@@ -1,0 +1,148 @@
+'use client';
+
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { DollarSign } from 'lucide-react';
+import { Button } from '@/components/ui/Buttons';
+
+interface SmartClientProps {
+  illustrationImage: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  reversed?: boolean;
+}
+
+const SmartClient: React.FC<SmartClientProps> = ({ illustrationImage, reversed = false }) => {
+  return (
+    <section className="w-full bg-[#29252D] py-10 lg:py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: reversed ? 50 : -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className={`text-center lg:text-left ${reversed ? 'lg:order-2 lg:col-span-2' : 'lg:order-1 lg:col-span-2'}`}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="mb-4"
+            >
+              <p className="text-sm sm:text-base text-gray-200">
+                Lorem ipsum dolor sit amet, c
+              </p>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="mb-8 lg:mb-4"
+            >
+              <h2 className="text-2xl sm:text-2xl lg:text-3xl xl:text-2xl font-bold text-white leading-tight">
+                Lorem ipsum dolor sit <br />amet, consectetur
+              </h2>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="mb-8 lg:mb-4 space-y-3"
+            >
+              <div className="flex items-center gap-2">
+                <DollarSign className="w-4 h-4 text-gray-400 flex-shrink-0" />
+                <p className="text-sm sm:text-base text-gray-100">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-gray-100 text-lg">♀</span>
+                <p className="text-sm sm:text-base text-gray-100">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-gray-100 text-lg">⚥</span>
+                <p className="text-sm sm:text-base text-gray-100">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                <p className="text-sm sm:text-base text-gray-100 text-justify">
+                 <span> ∞ </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Paragraph Text */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="mb-8 lg:mb-12"
+            >
+            </motion.div>
+
+            {/* Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              viewport={{ once: true }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
+              <Button
+                type="primary"
+                href="/apply"
+                className="w-full sm:w-auto"
+              >
+                Apply to Get Matched
+              </Button>
+              <Button
+                type="text"
+                href="/learn-more"
+                className="w-full sm:w-auto flex items-center gap-2"
+                showArrow={true}
+              >
+                Lorem ipsum dolor sit
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Section - Illustration */}
+          <motion.div
+            initial={{ opacity: 0, x: reversed ? -50 : 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className={`relative flex justify-center ${reversed ? 'lg:justify-start lg:order-1 lg:col-span-3' : 'lg:justify-end lg:order-2 lg:col-span-3'}`}
+          >
+            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-2xl">
+              <Image
+                src={illustrationImage.src}
+                alt={illustrationImage.alt}
+                width={Math.round(illustrationImage.width * 1.3)}
+                height={Math.round(illustrationImage.height * 1.3)}
+                className="w-full h-auto object-contain scale-110"
+                priority
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default SmartClient;
