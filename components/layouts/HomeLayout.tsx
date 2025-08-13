@@ -38,7 +38,28 @@ const smartClientImage = {
   width: 500,
   height: 500
 };
-
+  const mockTickerSection = {
+    __component: "sections.ticker" as const,
+    id: 1,
+    items: [
+      {
+        id: 1,
+        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  3.  Learn More",
+        logo: null
+      },
+      {
+        id: 2,
+        name: "Lorem Ipsum 1.  Learn More",
+        logo: null
+      },
+      {
+        id: 3,
+        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  2.  Learn More",
+        logo: null
+      }
+    ],
+    speed: 1
+  };
 
 
 const smartClientImage1 = {
@@ -195,6 +216,8 @@ export default function HomeLayout({ page }: HomeLayoutProps) {
           </section>
         );
       })}
+      <Ticker section={mockTickerSection} />
+
       <HeroSection heroImage={heroImage} />
       <ElevatorPitchSection />
 

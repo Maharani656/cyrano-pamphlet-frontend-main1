@@ -20,21 +20,30 @@ export default function Ticker({ section }: TickerProps) {
   // Get speed from Strapi or use default value (pixels per second)
   const speed = (section.speed || 1) * 20; // Convert to pixels per second
 
-  // Define the text items you specified - wrapped in useMemo to prevent dependency changes
-  const textItems = React.useMemo(() => [
-    {
-      id: "1",
-      name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  3.  Learn More"
-    },
-    {
-      id: "2", 
-      name: "Lorem Ipsum 1.  Learn More"
-    },
-    {
-      id: "3",
-      name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  2.  Learn More"
+  // Use items from section prop or fallback to default items
+  const textItems = React.useMemo(() => {
+    if (section.items && section.items.length > 0) {
+      return section.items;
     }
-  ], []);
+    // Fallback items if no items provided
+    return [
+      {
+        id: 1,
+        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  3.  Learn More",
+        logo: null
+      },
+      {
+        id: 2, 
+        name: "Lorem Ipsum 1.  Learn More",
+        logo: null
+      },
+      {
+        id: 3,
+        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  2.  Learn More",
+        logo: null
+      }
+    ];
+  }, [section.items]);
 
   // Create multiple copies for seamless infinite scroll
   const multipleItems = [...textItems, ...textItems, ...textItems, ...textItems];
@@ -136,7 +145,7 @@ export default function Ticker({ section }: TickerProps) {
 
   return (
     <section
-      className="relative w-full overflow-hidden py-2 bg-[#454545]"
+      className="sticky top-24 z-40 w-full overflow-hidden py-2 bg-[#3A3640]"
       aria-label="Ticker showcase"
     >
       <div ref={inViewRef} className="relative max-w-screen-2xl mx-auto">
