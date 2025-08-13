@@ -23,7 +23,7 @@ const IntroCard: React.FC<IntroCardProps> = ({ testimonialImage, testimonials })
   return (
     <section className="w-full bg-[#29252D] py-5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center gap-8 lg:gap-12">
+        <div className="flex flex-col items-center md:flex-row md:justify-center gap-8 lg:gap-12">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -31,7 +31,7 @@ const IntroCard: React.FC<IntroCardProps> = ({ testimonialImage, testimonials })
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center text-center  w-full max-w-sm md:max-w-xs lg:max-w-sm"
+              className="flex flex-col items-center text-center w-full max-w-sm md:max-w-xs lg:max-w-sm"
             >
               <div className="relative mb-6">
                 <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden">

@@ -191,7 +191,7 @@ export default function Navbar() {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden text-gray-900 dark:text-gray-100 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+              className="lg:hidden text-white p-2 rounded-md hover:bg-white/10 transition-colors"
               onClick={toggleMenu}
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
@@ -210,8 +210,19 @@ export default function Navbar() {
               />
 
               {/* Mobile menu content */}
-                             <div className="lg:hidden absolute left-0 right-0 top-full bg-[#29252D] border-b border-gray-700 shadow-lg z-40">
+              <div className="lg:hidden absolute left-0 right-0 top-full bg-[#29252D] border-b border-gray-700 shadow-lg z-40">
                 <div className="px-4 py-4 space-y-3">
+                  {/* Close button at top right */}
+                  <div className="flex justify-end">
+                    <button
+                      onClick={closeMenu}
+                      className="p-2 rounded-full transition-colors hover:bg-white/10 text-white"
+                      aria-label="Close menu"
+                    >
+                      <X size={20} />
+                    </button>
+                  </div>
+                  
                   {/* Get Matched button */}
                   <Button
                     type="secondary"

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Settings, User, FileText, Activity, Users, Monitor } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const FeaturesSection: React.FC = () => {
   const features = [
@@ -38,35 +39,57 @@ const FeaturesSection: React.FC = () => {
   ];
 
   return (
-    <div className="w-full  bg-[#29252D] py-16">
+    <div className="w-full bg-[#29252D] py-16 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between gap-8" style={{ flexWrap: "wrap" }}>
           {features.map((feature, index) => (
-            <div 
+            <motion.div 
               key={index} 
               className="flex-1 text-center"
               style={{
                 minWidth: "180px",
                 maxWidth: "190px"
               }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
               <div className="flex flex-col items-center space-y-4">
                 {/* Icon */}
-                <div className="flex items-center justify-center">
+                <motion.div 
+                  className="flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 + 0.2 }}
+                  viewport={{ once: true }}
+                >
                   {feature.icon}
-                </div>
+                </motion.div>
                 
                 {/* Title */}
-                <h3 className="text-white text-xl font-bold">
+                <motion.h3 
+                  className="text-white text-xl font-bold"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
+                  viewport={{ once: true }}
+                >
                   {feature.title}
-                </h3>
+                </motion.h3>
                 
-                                 {/* Description */}
-                 <p className="text-gray-300 text-sm leading-relaxed text-justify">
-                   {feature.description}
-                 </p>
+                {/* Description */}
+                <motion.p 
+                  className="text-gray-300 text-sm leading-relaxed text-justify"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  {feature.description}
+                </motion.p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

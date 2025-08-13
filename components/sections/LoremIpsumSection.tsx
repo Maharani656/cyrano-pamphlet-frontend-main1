@@ -2,36 +2,99 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const LoremIpsumSection: React.FC = () => {
   return (
     <>
-      <div style={{
-        width: "200%",
-        maxWidth: "880px",
-        margin: "auto",
-        color: "white",
-        position: "relative"
-      }}>
-        <div>
-          <p style={{ padding: "10px 0" }}>Lorem ipsum dolor</p>
-          <h1 style={{ fontSize: "20px", width: "25%", marginBottom: "20px" }}>Lorem ipsum dolor sit amet, consectetur</h1>
-        </div>
-        <div>
-          <Image src={'/assets/btn2.png'} alt="a" width={300} height={100} style={{
-            width: "60%"
-          }} />
-        </div>
-        <div style={{ position: "absolute", top: "0", right: "0", width: "60%" }}>
-          <Image src="/assets/btn1.png" alt="" width={300} height={100} style={{
-            width: "100%"
-          }} />
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+       
+        <div className="relative">
+        
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="relative z-10"
+          >
+            <p className="text-white text-sm sm:text-base py-2 sm:py-3">Lorem ipsum dolor</p>
+            <h1 className="text-white text-lg sm:text-xl lg:text-2xl xl:text-3xl font-bold mb-4 sm:mb-6 max-w-md lg:max-w-lg">
+              Lorem ipsum dolor sit amet, consectetur
+            </h1>
+          </motion.div>
+
+          {/* Button container - responsive layout */}
+          <div className="button-container flex flex-col md:flex-row md:relative justify-center items-center mb-0 xl:mb-0 2xl:mb-0" style={{
+            flexDirection: window.innerWidth < 980 ? 'column' : 'row'
+          }}>
+            {/* Button container - responsive layout */}
+            <div className="flex flex-col md:flex-row md:relative">
+              {/* Button 2 - Left image (lower z-index) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="relative z-10 mb-4 md:mb-0 md:mr-5"
+              >
+                <Image 
+                  src="/assets/btn2.png" 
+                  alt="Button 2" 
+                  width={390} 
+                  height={130} 
+                  className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
+                  priority
+                />  
+              </motion.div>
+
+                          {/* Button 1 - Right image (higher z-index, positioned above and overlapping) */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="relative z-20 w-full md:w-auto"
+              style={{
+                marginTop: window.innerWidth < 980 ? '0' : '-98px',
+                marginLeft: window.innerWidth < 980 ? '0' : '-180px'
+              }}
+            >
+                <Image 
+                  src="/assets/btn1.png" 
+                  alt="Button 1" 
+                  width={390} 
+                  height={130} 
+                  className="w-full max-w-xs sm:max-w-sm md:max-w-lg xl:max-w-xl"
+                  priority
+                />
+              </motion.div>
+            </div>
+          </div>
         </div>
       </div>
-      <div className='w-full bg-[#29252D] py-10 lg:py-8'>
-        <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' style={{ color: "white" }}>
-          <h2 style={{ fontSize: "32px" }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tem</h2>
-          <p style={{ fontSize: "12px" }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris n</p>
+
+      {/* Bottom section */}
+      <div className="w-full bg-[#29252D] py-8 sm:py-10 lg:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="text-white text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 leading-tight"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tem
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            viewport={{ once: true }}
+            className="text-white text-xs sm:text-sm lg:text-base leading-relaxed max-w-4xl"
+          >
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris n
+          </motion.p>
         </div>
       </div>
     </>

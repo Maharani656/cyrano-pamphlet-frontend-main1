@@ -8,23 +8,12 @@ import CatIllustrationSection from '@/components/sections/CatIllustrationSection
 import ElevatorPitchSection from '@/components/sections/ElevatorPitchSection';
 import FooterImage from '@/components/sections/FooterImage';
 import Ticker from "../sections/Ticker";
-import type { Section } from "@/interfaces/section.interface";
 import type { PageData } from "@/interfaces/page.interface";
 
 interface HomeLayoutProps {
   page: PageData;
 }
 
-const sectionStyles = {
-  background: (component: Section["__component"], index: number): string =>
-    component === "sections.ticker"
-      ? ""
-      : index % 2 === 0
-        ? "bg-gray-50 dark:bg-[#29252D]"
-        : "bg-white dark:bg-[#29252D]",
-
-  container: "max-w-7xl",
-};
 const heroImage = {
   src: "/assets/0_0 26.png",
   alt: "Black cat with glowing blue eyes against a pink moon backdrop with cherry blossoms",
@@ -159,7 +148,6 @@ const catIllustrationImages = {
 };
 
 export default function HomeLayout({ page }: HomeLayoutProps) {
-  // Safety check for page prop
   if (!page) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-zinc-900">
@@ -174,57 +162,15 @@ export default function HomeLayout({ page }: HomeLayoutProps) {
       </div>
     );
   }
-  
-  const { sections = [] } = page;
-  
-  // Image configurations
-
-  const renderSection = (section: Section) => {
-    const key = section.id;
-    switch (section.__component) {
-      case "sections.ticker":
-        return (
-          <Ticker
-            key={key}
-            section={
-              section as Extract<Section, { __component: "sections.ticker" }>
-            }
-          />
-        );
-      default:
-        return null;
-    }
-  };
   return (
     <div>
-      {sections && sections.length > 0 && sections.map((section, index) => {
-        const { __component, id } = section;
-        const isTicker = __component === "sections.ticker";
-        const bgClass = sectionStyles.background(__component, index);
-
-        return (
-          <section key={id} className={`w-full ${bgClass}`}>
-            {isTicker ? (
-              renderSection(section)
-            ) : (
-              <div
-                className={`mx-auto px-4 sm:px-6 lg:px-16 xl:px-20 ${sectionStyles.container}`}
-              >
-                {renderSection(section)}
-              </div>
-            )}
-          </section>
-        );
-      })}
       <Ticker section={mockTickerSection} />
-
       <HeroSection heroImage={heroImage} />
       <ElevatorPitchSection />
 
       <SmartClient illustrationImage={smartClientImage} />
       <SmartClient illustrationImage={smartClientImage1} reversed={true} />
-
-      <IntroCard testimonialImage={testimonialImage} testimonials={testimonials} />
+      <IntroCard testimonialImage={testimonialImage} testimonials={testimonials} /> 
       <FlipSection sectionImage={flipSectionImage1} />
       <FlipSection sectionImage={flipSectionImage} reversed={true} />
       <FeatureGrid features={features} />
