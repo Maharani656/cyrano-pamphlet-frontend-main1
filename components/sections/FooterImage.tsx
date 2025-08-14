@@ -15,7 +15,7 @@ interface FooterImageProps {
 const FooterImage: React.FC<FooterImageProps> = ({ footerImage }) => {
   return (
     <section className="w-full bg-[#29252D] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+      <div className="w-full mx-auto px-3 sm:px-4 lg:px-6">
         {/* Bottom Section - Large Full-width Illustration */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}

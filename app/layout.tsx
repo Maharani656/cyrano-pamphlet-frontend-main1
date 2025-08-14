@@ -66,7 +66,13 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body
         suppressHydrationWarning
-        className={`${calistoga.variable} ${gilroy.className} antialiased bg-[#29252D] text-white transition-colors duration-300`}
+        className={`${calistoga.variable} ${gilroy.className} antialiased bg-[#29252D] text-white transition-colors duration-300 overflow-y-auto
+  [&::-webkit-scrollbar]:w-1.5
+  [&::-webkit-scrollbar-thumb]:rounded-[50px]
+  [&::-webkit-scrollbar-track]:bg-gray-100
+  [&::-webkit-scrollbar-thumb]:bg-pink-500
+  `
+}
       >
         <Navbar />
 

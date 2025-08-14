@@ -45,7 +45,7 @@ export default function Footer() {
       {/* Ticker component at the top */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols- gap-16 mb-16">
           {/* Dynamic columns of links from categorizedLinks */}
           {Object.entries(categorizedLinks).map(([category, links]) => (
             <div key={category} className="space-y-4">
@@ -69,7 +69,7 @@ export default function Footer() {
 
           {/* App downloads and language selector */}
           <div className="space-y-6">
-            <div className="space-y-2">
+            <div className="space-y-2  flex md:items-center md:justify-center gap-[23px]">
               <PrimaryButton
                 href="#"
                 text="Lyft driver app"

@@ -33,6 +33,7 @@ export const Button = ({
     hover:shadow-[inset_0_2px_4px_rgba(255,255,255,0.15),0_6px_12px_rgba(0,0,0,0.3)]
     [text-shadow:0_0_13.67px_rgba(254,60,114,0.8),0_0_13.67px_rgba(254,60,114,0.8)]
     hover:[text-shadow:0_0_15px_rgba(254,60,114,1),0_0_15px_rgba(254,60,114,1)]
+    mb-0 md:mb-0
   `;
 
   const secondaryClasses = `

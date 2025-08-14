@@ -9,10 +9,40 @@ import PaymentSection from "../sections/Payment/PaymentSection";
 import LanguageSwitcher from "../ui/LanguageSwitcher";
 import DarkModeSwitcher from "../ui/ThemeSwitcher";
 import { Button } from "../ui/Buttons";
+import GiftShopModal from "../modals/GiftShopModal";
+
+import Ticker from "../sections/Ticker";
+
+
+  const mockTickerSection = {
+    __component: "sections.ticker" as const,
+    id: 1,
+    items: [
+      {
+        id: 1,
+        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  3.  Learn More",
+        logo: null
+      },
+      {
+        id: 2,
+        name: "Lorem Ipsum 1.  Learn More",
+        logo: null
+      },
+      {
+        id: 3,
+        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  2.  Learn More",
+        logo: null
+      }
+    ],
+    speed: 1
+  };
+
+
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [isGiftShopModalOpen, setIsGiftShopModalOpen] = useState(false);
   const { data, loading } = useNavigationLink();
   const pathname = usePathname();
 
@@ -26,6 +56,13 @@ export default function Navbar() {
   
   const closePaymentModal = useCallback(() => setIsPaymentModalOpen(false), []);
 
+  const openGiftShopModal = useCallback(() => {
+    setIsGiftShopModalOpen(true);
+    setIsMenuOpen(false); // Always close menu when opening modal
+  }, [setIsMenuOpen]);
+
+  const closeGiftShopModal = useCallback(() => setIsGiftShopModalOpen(false), []);
+
   const isActiveLink = useCallback((url: string) =>
     (url === "/" && pathname === "/") ||
     (url !== "/" && pathname.startsWith(url)), [pathname]);
@@ -35,16 +72,29 @@ export default function Navbar() {
     if (data?.navigation && data.navigation.length > 0) {
       return data.navigation.map((item, index) => (
         <React.Fragment key={item.id}>
-          <Link
-            href={item.url}
-            className={`font-semibold text-sm uppercase transition-colors duration-200 ${
-              isActiveLink(item.url)
-                ? "text-pink-500"
-                : "text-white hover:text-pink-400"
-            }`}
-          >
-            {item.label}
-          </Link>
+          {item.url === "/gift-meetups" ? (
+            <button
+              onClick={openGiftShopModal}
+              className={`font-semibold text-sm uppercase transition-colors duration-200 cursor-pointer ${
+                isActiveLink(item.url)
+                  ? "text-pink-500"
+                  : "text-white hover:text-pink-400"
+              }`}
+            >
+              {item.label}
+            </button>
+          ) : (
+            <Link
+              href={item.url}
+              className={`font-semibold text-sm uppercase transition-colors duration-200 ${
+                isActiveLink(item.url)
+                  ? "text-pink-500"
+                  : "text-white hover:text-pink-400"
+              }`}
+            >
+              {item.label}
+            </Link>
+          )}
           {index < data.navigation.length - 1 && (
             <div className="w-px h-4 bg-gray-300 dark:bg-gray-600 mx-6"></div>
           )}
@@ -69,12 +119,12 @@ export default function Navbar() {
           userlayout2
         </Link>
         <div className="w-px h-4 bg-gray-300 dark:bg-gray-600 mx-6"></div>
-        <Link
-          href="/gift-meetups"
-          className="font-semibold text-sm uppercase transition-colors duration-200 text-white hover:text-pink-400"
+        <button
+          onClick={openGiftShopModal}
+          className="font-semibold text-sm uppercase transition-colors duration-200 text-white hover:text-pink-400 cursor-pointer"
         >
           GIFT MEETUPS
-        </Link>
+        </button>
         <div className="w-px h-4 bg-gray-300 dark:bg-gray-600 mx-6"></div>
         <Link
           href="/android-app"
@@ -90,18 +140,35 @@ export default function Navbar() {
   const mobileNavigationItems = useMemo(() => {
     if (data?.navigation && data.navigation.length > 0) {
       return data.navigation.map((item) => (
-        <Link
-          key={item.id}
-          href={item.url}
-          onClick={closeMenu}
-          className={`block px-4 py-3 rounded-lg font-semibold text-sm uppercase transition-colors duration-200 ${
-            isActiveLink(item.url)
-              ? "text-pink-500 bg-pink-50 dark:bg-pink-900/20"
-              : "text-white hover:text-pink-400 hover:bg-white/10"
-          }`}
-        >
-          {item.label}
-        </Link>
+        item.url === "/gift-meetups" ? (
+          <button
+            key={item.id}
+            onClick={() => {
+              closeMenu();
+              openGiftShopModal();
+            }}
+            className={`block w-full text-left px-4 py-3 rounded-lg font-semibold text-sm uppercase transition-colors duration-200 cursor-pointer ${
+              isActiveLink(item.url)
+                ? "text-pink-500 bg-pink-50 dark:bg-pink-900/20"
+                : "text-white hover:text-pink-400 hover:bg-white/10"
+            }`}
+          >
+            {item.label}
+          </button>
+        ) : (
+          <Link
+            key={item.id}
+            href={item.url}
+            onClick={closeMenu}
+            className={`block px-4 py-3 rounded-lg font-semibold text-sm uppercase transition-colors duration-200 ${
+              isActiveLink(item.url)
+                ? "text-pink-500 bg-pink-50 dark:bg-pink-900/20"
+                : "text-white hover:text-pink-400 hover:bg-white/10"
+            }`}
+          >
+            {item.label}
+          </Link>
+        )
       ));
     }
     
@@ -122,13 +189,15 @@ export default function Navbar() {
         >
           userlayout2
         </Link>
-        <Link
-          href="/gift-meetups"
-          onClick={closeMenu}
-          className="block px-4 py-3 rounded-lg font-semibold text-sm uppercase transition-colors duration-200 text-white hover:text-pink-400 hover:bg-white/10"
+        <button
+          onClick={() => {
+            closeMenu();
+            openGiftShopModal();
+          }}
+          className="block w-full text-left px-4 py-3 rounded-lg font-semibold text-sm uppercase transition-colors duration-200 text-white hover:text-pink-400 hover:bg-white/10 cursor-pointer"
         >
           GIFT MEETUPS
-        </Link>
+        </button>
         <Link
           href="/android-app"
           onClick={closeMenu}
@@ -151,7 +220,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 w-full border-b border-gray-700 bg-[#29252D] backdrop-blur-sm ">
+      <header className="sticky  top-0 z-30 w-full border-b border-gray-700 bg-[#29252D] backdrop-blur-sm " style={{position:"fixed"}}>
         <div className="max-w-7xl mx-auto">
           <nav className="flex items-center justify-between h-16 sm:h-20 lg:h-24 px-3 sm:px-4 lg:px-6">
             {/* Logo */}
@@ -241,6 +310,11 @@ export default function Navbar() {
             </>
           )}
         </div>
+
+
+      <Ticker section={mockTickerSection} />
+
+
       </header>
 
       {/* Payment Modal */}
@@ -265,6 +339,11 @@ export default function Navbar() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Gift Shop Modal */}
+      {isGiftShopModalOpen && (
+        <GiftShopModal isOpen={isGiftShopModalOpen} onClose={closeGiftShopModal} />
       )}
     </>
   );

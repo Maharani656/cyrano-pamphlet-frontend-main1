@@ -7,7 +7,6 @@ import FeatureGrid from '@/components/sections/FeatureGrid';
 import CatIllustrationSection from '@/components/sections/CatIllustrationSection';
 import ElevatorPitchSection from '@/components/sections/ElevatorPitchSection';
 import FooterImage from '@/components/sections/FooterImage';
-import Ticker from "../sections/Ticker";
 import type { PageData } from "@/interfaces/page.interface";
 
 interface HomeLayoutProps {
@@ -27,28 +26,7 @@ const smartClientImage = {
   width: 500,
   height: 500
 };
-  const mockTickerSection = {
-    __component: "sections.ticker" as const,
-    id: 1,
-    items: [
-      {
-        id: 1,
-        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  3.  Learn More",
-        logo: null
-      },
-      {
-        id: 2,
-        name: "Lorem Ipsum 1.  Learn More",
-        logo: null
-      },
-      {
-        id: 3,
-        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  2.  Learn More",
-        logo: null
-      }
-    ],
-    speed: 1
-  };
+
 
 
 const smartClientImage1 = {
@@ -164,7 +142,6 @@ export default function HomeLayout({ page }: HomeLayoutProps) {
   }
   return (
     <div>
-      <Ticker section={mockTickerSection} />
       <HeroSection heroImage={heroImage} />
       <ElevatorPitchSection />
 
