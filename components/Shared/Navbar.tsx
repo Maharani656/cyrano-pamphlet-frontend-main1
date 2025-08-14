@@ -16,8 +16,6 @@ export default function Navbar() {
   const { data, loading } = useNavigationLink();
   const pathname = usePathname();
 
-
-
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen]);
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
 
@@ -153,9 +151,9 @@ export default function Navbar() {
 
   return (
     <>
-             <header className="sticky top-0 z-50 w-full border-b border-gray-700 bg-[#29252D] backdrop-blur-sm">
+      <header className="sticky top-0 z-30 w-full border-b border-gray-700 bg-[#29252D] backdrop-blur-sm ">
         <div className="max-w-7xl mx-auto">
-          <nav className="flex items-center justify-between h-24 px-4">
+          <nav className="flex items-center justify-between h-16 sm:h-20 lg:h-24 px-3 sm:px-4 lg:px-6">
             {/* Logo */}
             <div className="flex-shrink-0">
               <Link href="/" onClick={closeMenu}>
@@ -163,15 +161,15 @@ export default function Navbar() {
                   <Image
                     src="/LOGO.svg"
                     alt={data?.siteName || "Logo"}
-                    width={40}
-                    height={40}
-                    className="h-10 w-auto object-contain"
+                    width={300}
+                    height={400}
+                    className="h-32 w-32 sm:h-10 sm:w-10 lg:h-30 lg:w-30 object-contain"
                   />
                 </div>
               </Link>
             </div>
 
-                        {/* Desktop Navigation */}
+            {/* Desktop Navigation */}
             <div className="hidden lg:flex lg:items-center lg:justify-end lg:flex-1">
               <Button
                 type="secondary"
@@ -180,13 +178,9 @@ export default function Navbar() {
               >
                 Get Matched
               </Button>
-                                          <div className="flex items-center ml-6">
+              <div className="flex items-center ml-6">
                 {navigationItems}
               </div>
-              {/* <div className="flex items-center ml-5 gap-3">
-                <DarkModeSwitcher />
-                <LanguageSwitcher />
-                </div> */}
             </div>
 
             {/* Mobile Menu Button */}
@@ -196,7 +190,7 @@ export default function Navbar() {
               aria-label="Toggle menu"
               aria-expanded={isMenuOpen}
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </nav>
 
@@ -210,7 +204,7 @@ export default function Navbar() {
               />
 
               {/* Mobile menu content */}
-              <div className="lg:hidden absolute left-0 right-0 top-full bg-[#29252D] border-b border-gray-700 shadow-lg z-40">
+              <div className="lg:hidden fixed left-0 right-0 top-0 bg-[#29252D] border-b border-gray-700 shadow-lg z-50 overflow-hidden">
                 <div className="px-4 py-4 space-y-3">
                   {/* Close button at top right */}
                   <div className="flex justify-end">
@@ -219,7 +213,7 @@ export default function Navbar() {
                       className="p-2 rounded-full transition-colors hover:bg-white/10 text-white"
                       aria-label="Close menu"
                     >
-                      <X size={20} />
+                      <X size={18} />
                     </button>
                   </div>
                   
@@ -232,7 +226,7 @@ export default function Navbar() {
                     Get Matched
                   </Button>
 
-                                    {/* Navigation links */}
+                  {/* Navigation links */}
                   <div className="space-y-1">
                     {mobileNavigationItems}
                   </div>
@@ -251,10 +245,10 @@ export default function Navbar() {
 
       {/* Payment Modal */}
       {isPaymentModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
+        <div className="fixed inset-0 z-60 bg-black/50 backdrop-blur-sm overflow-hidden">
           <div className="h-full overflow-y-auto">
             <div className="min-h-full flex items-start sm:items-center justify-center p-4 py-8 sm:py-4">
-              <div className="relative bg-white dark:bg-zinc-800 rounded-2xl shadow-2xl w-full max-w-2xl">
+              <div className="relative bg-white dark:bg-zinc-800 rounded-2xl shadow-2xl w-full max-w-2xl mx-4">
                 <div className="sticky top-0 bg-white dark:bg-zinc-800 rounded-t-2xl flex justify-end p-4 z-10">
                   <button
                     onClick={closePaymentModal}

@@ -16,9 +16,9 @@ interface FlipSectionProps {
 
 const FlipSection: React.FC<FlipSectionProps> = ({ sectionImage, reversed = false }) => {
   return (
-    <section className="w-full bg-[#29252D] py-10 lg:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section className="w-full bg-[#29252D] py-10 lg:py-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Image Section */}
           <motion.div
             initial={{ opacity: 0, x: reversed ? 50 : -50 }}
@@ -27,7 +27,7 @@ const FlipSection: React.FC<FlipSectionProps> = ({ sectionImage, reversed = fals
             viewport={{ once: true }}
             className={`relative flex justify-center lg:justify-${reversed ? 'start' : 'end'} order-1 ${reversed ? 'lg:order-1' : 'lg:order-2'}`}
           >
-            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-xl">
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-xl">
               <Image
                 src={sectionImage.src}
                 alt={sectionImage.alt}
@@ -52,9 +52,9 @@ const FlipSection: React.FC<FlipSectionProps> = ({ sectionImage, reversed = fals
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mb-6"
+              className="mb-4 sm:mb-6"
             >
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-tight mb-4">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white leading-tight mb-3 sm:mb-4 break-words">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit
               </h2>
             </motion.div>
@@ -64,9 +64,9 @@ const FlipSection: React.FC<FlipSectionProps> = ({ sectionImage, reversed = fals
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="mb-6 sm:mb-8"
             >
-              <p className="text-base sm:text-lg text-gray-400 leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-lg text-gray-400 leading-relaxed break-words">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
               </p>
             </motion.div>
@@ -85,14 +85,6 @@ const FlipSection: React.FC<FlipSectionProps> = ({ sectionImage, reversed = fals
               >
                 Sign Up for The Hardware
               </Button>
-              {/* <Button
-                type="text"
-                href="/learn-more"
-                className="w-full sm:w-auto flex items-center gap-2"
-                showArrow={true}
-              >
-                Learn More
-              </Button> */}
             </motion.div>
           </motion.div>
         </div>

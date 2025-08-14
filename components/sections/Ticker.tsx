@@ -29,17 +29,17 @@ export default function Ticker({ section }: TickerProps) {
     return [
       {
         id: 1,
-        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  3.  Learn More",
+        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Learn More",
         logo: null
       },
       {
         id: 2, 
-        name: "Lorem Ipsum 1.  Learn More",
+        name: "Lorem Ipsum dolor sit amet. Learn More",
         logo: null
       },
       {
         id: 3,
-        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  2.  Learn More",
+        name: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Learn More",
         logo: null
       }
     ];
@@ -145,7 +145,7 @@ export default function Ticker({ section }: TickerProps) {
 
   return (
     <section
-      className="sticky top-24 z-40 w-full overflow-hidden py-2 bg-[#3A3640]"
+      className="hidden sm:block sticky top-16 sm:top-20 lg:top-24 z-40 w-full overflow-hidden py-2 bg-[#3A3640]"
       aria-label="Ticker showcase"
     >
       <div ref={inViewRef} className="relative max-w-screen-2xl mx-auto">
@@ -159,17 +159,17 @@ export default function Ticker({ section }: TickerProps) {
           {multipleItems.map((item, index) => (
             <div
               key={`${item.id}-${index}`}
-              className="group mx-3 flex-shrink-0 flex items-center"
+              className="group mx-2 sm:mx-3 flex-shrink-0 flex items-center"
               role="listitem"
             >
-              <span className="text-xs font-medium text-white dark:text-white">
+              <span className="text-xs sm:text-sm font-medium text-white dark:text-white max-w-xs sm:max-w-none break-words">
                 {item.name.split('Learn More').map((part, idx, array) => (
                   <React.Fragment key={idx}>
                     {part}
                     {idx < array.length - 1 && (
                       <a
                         href="#"
-                        className="text-[#FE3C72] underline font-semibold ml-1"
+                        className="text-[#FE3C72] underline font-semibold ml-1 inline-block"
                         style={{ textShadow: '0 0 6px #FE3C72' }}
                         onClick={e => {
                           e.preventDefault();

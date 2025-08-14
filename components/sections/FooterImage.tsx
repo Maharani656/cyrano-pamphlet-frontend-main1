@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-interface CatIllustrationSectionProps {
+interface FooterImageProps {
   footerImage: {
     src: string;
     alt: string;
@@ -12,10 +12,10 @@ interface CatIllustrationSectionProps {
   };
 }
 
-const CatIllustrationSection: React.FC<CatIllustrationSectionProps> = ({ footerImage }) => {
+const FooterImage: React.FC<FooterImageProps> = ({ footerImage }) => {
   return (
-    <section className="w-full bg-[#29252D]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="w-full bg-[#29252D] overflow-hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
         {/* Bottom Section - Large Full-width Illustration */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -40,4 +40,4 @@ const CatIllustrationSection: React.FC<CatIllustrationSectionProps> = ({ footerI
   );
 };
 
-export default CatIllustrationSection;
+export default FooterImage;

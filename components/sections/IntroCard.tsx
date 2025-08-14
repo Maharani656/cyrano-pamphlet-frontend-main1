@@ -21,9 +21,9 @@ interface IntroCardProps {
 
 const IntroCard: React.FC<IntroCardProps> = ({ testimonialImage, testimonials }) => {
   return (
-    <section className="w-full bg-[#29252D] py-5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center md:flex-row md:justify-center gap-8 lg:gap-12">
+    <section className="w-full bg-[#29252D] py-5 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+        <div className="flex flex-col items-center md:flex-row md:justify-center gap-6 sm:gap-8 lg:gap-12">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -33,8 +33,8 @@ const IntroCard: React.FC<IntroCardProps> = ({ testimonialImage, testimonials })
               viewport={{ once: true }}
               className="flex flex-col items-center text-center w-full max-w-sm md:max-w-xs lg:max-w-sm"
             >
-              <div className="relative mb-6">
-                <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden">
+              <div className="relative mb-4 sm:mb-6">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden">
                   <Image
                     src={testimonialImage.src}
                     alt={`${testimonial.name} profile`}
@@ -45,18 +45,18 @@ const IntroCard: React.FC<IntroCardProps> = ({ testimonialImage, testimonials })
                   />
                 </div>
               </div>
-              <div className="mb-6">
-                <p className="text-sm sm:text-base text-gray-400 leading-relaxed text-justify">
+              <div className="mb-4 sm:mb-6">
+                <p className="text-sm sm:text-base text-gray-400 leading-relaxed break-words">
                   {testimonial.text}
                 </p>
               </div>
               <div className="mb-2">
-                <h3 className="text-lg sm:text-xl font-bold text-white">
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white break-words">
                   {testimonial.name}
                 </h3>
               </div>
               <div>
-                <p className="text-sm text-gray-400  ">
+                <p className="text-xs sm:text-sm text-gray-400 break-words">
                   {testimonial.subtitle}
                 </p>
               </div>

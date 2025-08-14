@@ -17,9 +17,9 @@ interface SmartClientProps {
 
 const SmartClient: React.FC<SmartClientProps> = ({ illustrationImage, reversed = false }) => {
   return (
-    <section className="w-full bg-[#29252D] py-10 lg:py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+    <section className="w-full bg-[#29252D] py-10 lg:py-8 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 sm:gap-12 lg:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: reversed ? 50 : -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -34,8 +34,8 @@ const SmartClient: React.FC<SmartClientProps> = ({ illustrationImage, reversed =
               viewport={{ once: true }}
               className="mb-4"
             >
-              <p className="text-sm sm:text-base text-gray-200">
-                Lorem ipsum dolor sit amet, c
+              <p className="text-sm sm:text-base text-gray-200 break-words">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
               </p>
             </motion.div>
 
@@ -45,10 +45,10 @@ const SmartClient: React.FC<SmartClientProps> = ({ illustrationImage, reversed =
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mb-8 lg:mb-4"
+              className="mb-6 sm:mb-8 lg:mb-4"
             >
-              <h2 className="text-2xl sm:text-2xl lg:text-3xl xl:text-2xl font-bold text-white leading-tight">
-                Lorem ipsum dolor sit <br />amet, consectetur
+              <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-2xl font-bold text-white leading-tight break-words">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
               </h2>
             </motion.div>
 
@@ -57,41 +57,32 @@ const SmartClient: React.FC<SmartClientProps> = ({ illustrationImage, reversed =
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
               viewport={{ once: true }}
-              className="mb-8 lg:mb-4 space-y-3"
+              className="mb-6 sm:mb-8 lg:mb-4 space-y-3"
             >
-              <div className="flex items-center gap-2">
-                <DollarSign className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                <p className="text-sm sm:text-base text-gray-100">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-gray-100 text-lg">♀</span>
-                <p className="text-sm sm:text-base text-gray-100">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing
-                </p>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-gray-100 text-lg">⚥</span>
-                <p className="text-sm sm:text-base text-gray-100">
+              <div className="flex items-start gap-2">
+                <DollarSign className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
+                <p className="text-sm sm:text-base text-gray-100 break-words">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit
                 </p>
               </div>
-              <div className="flex items-center gap-2">
-                <p className="text-sm sm:text-base text-gray-100 text-justify">
-                 <span> ∞ </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+              <div className="flex items-start gap-2">
+                <span className="text-gray-100 text-lg flex-shrink-0">♀</span>
+                <p className="text-sm sm:text-base text-gray-100 break-words">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
                 </p>
               </div>
-            </motion.div>
-
-            {/* Paragraph Text */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              viewport={{ once: true }}
-              className="mb-8 lg:mb-12"
-            >
+              <div className="flex items-start gap-2">
+                <span className="text-gray-100 text-lg flex-shrink-0">⚥</span>
+                <p className="text-sm sm:text-base text-gray-100 break-words">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <p className="text-sm sm:text-base text-gray-100 break-words">
+                  <span className="inline-block mr-1">∞</span>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
             </motion.div>
 
             {/* Buttons */}
@@ -128,7 +119,7 @@ const SmartClient: React.FC<SmartClientProps> = ({ illustrationImage, reversed =
             viewport={{ once: true }}
             className={`relative flex justify-center ${reversed ? 'lg:justify-start lg:order-1 lg:col-span-3' : 'lg:justify-end lg:order-2 lg:col-span-3'}`}
           >
-            <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-2xl">
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-2xl">
               <Image
                 src={illustrationImage.src}
                 alt={illustrationImage.alt}

@@ -41,7 +41,7 @@ const FeaturesSection: React.FC = () => {
   return (
     <div className="w-full bg-[#29252D] py-16 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between gap-8" style={{ flexWrap: "wrap" }}>
+        <div className="flex justify-center gap-8" style={{ flexWrap: "wrap" }}>
           {features.map((feature, index) => (
             <motion.div 
               key={index} 

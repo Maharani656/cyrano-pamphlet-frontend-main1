@@ -68,9 +68,9 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${calistoga.variable} ${gilroy.className} antialiased bg-[#29252D] text-white transition-colors duration-300`}
       >
-
-
         <Navbar />
+
+
         <TawkTo />
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
         <LogRocket />
